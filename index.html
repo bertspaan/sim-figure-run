@@ -6,25 +6,34 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="style.css" />
-  <!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'> -->  
+  <link href='http://fonts.googleapis.com/css?family=Gudea:400,700,400italic' rel='stylesheet' type='text/css'>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script>
 </head>
 <body>
-  <div id="info">
-    
-  </div>
   <div id="map">
   </div>
-	<script>    
-		var map = L.map('map');
+  <div id="box">
+    <h1>SIM Figure Run</h1>
+    <h2>blablabla lekker rondjes rennen</h2>
+    <table id="bar">
+      <tr />
+    </table>
+    <span id="last"></span>
+  </div>
+	<script>
+  
+    var colors = ["rgb(255, 153, 0)", "#00ffff"],
+        map = L.map('map');
     
     //http://127.0.0.1:20008/tile/sim-figure-run/14/8414/5386.png?updated=1390253785000&metatile=1&scale=1
     
-		var tileLayer = L.tileLayer("http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+    var waag = '<a href="http://www.waag.org" title="Institute for art, science &amp; technology">Waag Society <img id="waag-mini" src="waag-mini.png" /></a>';		
+    
+    var tileLayer = L.tileLayer("http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
 		//var tileLayer = L.tileLayer("http://127.0.0.1:20008/tile/sim-figure-run/{z}/{x}/{y}.png?updated=1391253780000&metatile=1&scale=1", {
-      attributionControl: false,
+      attribution: waag,
 			minZoom: 12,
 			maxZoom: 16
 		}).addTo(map);
@@ -37,13 +46,15 @@
         features: []          
       };
       
+      walked = 0;
       json.forEach(function(route) {
-        var geometry = route.coordinates;
         
+        walked += (route.walked > 0) ? 1 : 0;
+        
+        var geometry = route.coordinates;        
         geometry.coordinates.forEach(function(coordinate) {
           coordinate.reverse();
-        });
-        
+        });        
 
         var feature = {
           type: "Feature",
@@ -60,11 +71,21 @@
       L.geoJson(geojson, {
         style: function(feature) {
           switch (feature.properties.walked) {
-            case true:  return {color: "#ffff00"};
-            case false: return {color: "#00ffff"};
+            case true:  return {color: colors[0]};
+            case false: return {color: colors[1]};
           }
         }
-    }).addTo(map);
+      }).addTo(map);
+      
+      d3.select("#bar tr").selectAll("td")
+          .data([walked, json.length - walked])
+          .enter()
+        .append("td")
+          .attr("width", function(d) { return Math.round(d / json.length * 100) + "%" })
+          .attr("title", function(d) { return Math.round(d / json.length * 100) + "%" })
+          .attr("class", function(d, i) { return i == 0 ? "walked" : ""; })
+          .style("background-color", function(d, i) { return colors[i]; })
+          .html(function(d, i) { return d; })
       
     });
     
