@@ -16,27 +16,28 @@
   </div>
   <div id="box">
     <h1>SIM Figure Run</h1>
-    <h2>blablabla lekker rondjes rennen</h2>
+    <h2>Ondertitel</h2>
     <table id="bar">
       <tr />
     </table>
     <span id="last"></span>
     <div id="logos">
-      <a href=""><img src="img/logos/aci.png"></a>
+      <a href="http://www.amsterdamcreativeindustries.com/"><img src="img/logos/aci.png"></a>
       <a href="http://citysdk.eu"><img src="img/logos/citysdk.png"></a>
-      <a href=""><img src="img/logos/commit-sense.png.png"></a>
+      <a href="http://www.commit-nl.nl/"><img src="img/logos/commit-sense.png"></a>
     </div>
   </div>
 	<script>
   
-    var colors = ["rgb(255, 153, 0)", "#00ffff"],
+    var colors = ["rgba(255, 153, 0, 0.9)", "rgba(190, 190, 190, 0.6)"],
         map = L.map('map');
     
     //http://127.0.0.1:20008/tile/sim-figure-run/14/8414/5386.png?updated=1390253785000&metatile=1&scale=1
     
     var waag = '<a href="http://www.waag.org" title="Institute for art, science &amp; technology">Waag Society <img id="waag-mini" src="waag-mini.png" /></a>';		
     
-    var tileLayer = L.tileLayer("http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+    //var tileLayer = L.tileLayer("http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+    var tileLayer = L.tileLayer("http://tiles.citysdk.waag.org/v2/sim-figure-run/{z}/{x}/{y}.png", {
 		//var tileLayer = L.tileLayer("http://127.0.0.1:20008/tile/sim-figure-run/{z}/{x}/{y}.png?updated=1391253780000&metatile=1&scale=1", {
       attribution: waag,
 			minZoom: 12,
@@ -71,9 +72,16 @@
           geometry: geometry
         }
         geojson.features.push(feature);          
-      });      
+      });
+      
+      function onEachFeature(feature, layer) {
+        if (feature.properties) {
+          layer.bindPopup(feature.properties.date + " maar dan mooi en wijknaam en ID!");
+        }
+      }     
 
       L.geoJson(geojson, {
+        onEachFeature: onEachFeature,
         style: function(feature) {
           switch (feature.properties.walked) {
             case true:  return {color: colors[0]};

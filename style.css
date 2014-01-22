@@ -15,15 +15,32 @@ body {
 #box {
   position: absolute;
   display: block;
-  width: 700px;
-  height: 200px;
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 500px;
+  height: 160px;
+  background-color: rgba(255, 255, 255, 1);
   margin: 0 auto;
   top: 10px;
   right: 0;
   bottom: 0;
   left: 0;
   border-radius: 5px;
+
+  padding: 20px;
+}
+
+h1, h2 {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#logos {
+  width: 450px;
+  margin: 0 auto;
+}
+
+#logos img {
+  padding: 0 10px;
 }
 
 #waag-mini {
