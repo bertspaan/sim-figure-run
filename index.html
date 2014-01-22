@@ -39,7 +39,12 @@
       
       json.forEach(function(route) {
         var geometry = route.coordinates;
-        geometry.coordinates.map(Array.reverse);
+        
+        geometry.coordinates.forEach(function(coordinate) {
+          coordinate.reverse();
+        });
+        
+
         var feature = {
           type: "Feature",
           properties: {
