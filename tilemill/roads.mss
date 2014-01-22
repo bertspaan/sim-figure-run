@@ -2,53 +2,6 @@
    ROAD & RAIL LINES
 /* ================================================================== */
 
-/* At lower zoomlevels, just show major automobile routes: motorways
-and trunks. */
-
-#roads_low[zoom>=5][zoom<=8] {
-  [type='motorway'] { line-color: @motorway_line; }
-  [type='trunk'] { line-color: @trunk_line; }
-  [zoom=5] {
-    [type='motorway'] { line-width: 0.4; }
-    [type='trunk'] { line-width: 0.2; } }
-  [zoom=6] {
-    [type='motorway'] { line-width: 0.5; }
-    [type='trunk'] { line-width: 0.25; } }
-  [zoom=7] {
-    [type='motorway'] { line-width: 0.6; }
-    [type='trunk'] { line-width: 0.3; } }
-  [zoom=8] {
-    [type='motorway'] { line-width: 1; }
-    [type='trunk'] { line-width: 0.5; } }
-}
-
-/* At mid-level scales start to show primary and secondary routes
-as well. */
-
-#roads_med[zoom>=9][zoom<=10] {
-  [type='motorway'],
-  [type='motorway_link'] {
-    line-color: @motorway_line;
-  }
-  [type='trunk'],
-  [type='trunk_link'] {
-    line-color: @trunk_line;
-  }
-  [type='primary'] { line-color: @primary_line; }
-  [type='secondary'] { line-color: @secondary_line; }
-  [type='tertiary'] { line-color: @standard_line; }
-  [zoom=9] {
-    [type='motorway'],[type='trunk'] { line-width: 1.4; }
-    [type='primary'],[type='secondary'],
-    [type='motorway_link'],[type='trunk_link'] { line-width: 0.6; }
-  }
-  [zoom=10] {
-    [type='motorway'],[type='trunk'] { line-width: 1.8; }
-    [type='primary'],[type='secondary'],
-    [type='motorway_link'],[type='trunk_link'] { line-width: 0.8; }
-  }
-}
-
 /* At higher levels the roads become more complex. We're now showing 
 more than just automobile routes - railways, footways, and cycleways
 come in as well.
@@ -98,7 +51,7 @@ come in as well.
     [bridge=1] { line-color: @secondary_case * 0.8; }
   }
   [stylegroup='railway'] {
-    line-color: fadeout(@road_line ,50%);
+    line-color: fadeout(@standard_case ,50%);
     [bridge=1] { line-color: @secondary_case * 0.8; }
   }
   [tunnel=1] { line-dasharray: 3,3; }        
@@ -200,7 +153,7 @@ come in as well.
     [tunnel=1] { line-color: lighten(@secondary_fill, 10%); }
   }
   [stylegroup='railway'] {
-    line-color: @rail_line;
+    line-color: lighten(@rail_fill, 10%);
     line-dasharray: 1,1;
     [type='subway'] { line-opacity: 0.67; }
     [zoom>15] { line-dasharray: 1,2; } 
@@ -291,12 +244,12 @@ come in as well.
 #bridge[render='2_line'][zoom>=14][zoom<=20]{
   /* -- colors & styles -- */
   [stylegroup='noauto'] {
-    line-color: @road_line;
+    line-color: @road_fill;
     line-width: 0;
     line-join: round;
   }
   [stylegroup='railway'] {
-    line-color: @road_line;
+    line-color: @road_fill;
     line-join: round;
   }
   /* -- widths -- */
@@ -320,28 +273,6 @@ come in as well.
     [stylegroup='noauto']   { line-width: @rdz18_min / 4 + 3; }
     [stylegroup='railway']  { line-width: 4 + 3; }
   }
-}
-
-/* ---- Turning Circles --------------------------------------------- */
-#turning_circle_case[zoom>=14] {
-  marker-fill:@standard_fill;
-  marker-line-color:@standard_case;
-  marker-line-width:2;
-  marker-allow-overlap:true;
-}
-#turning_circle_fill[zoom>=14] {
-  marker-fill:@standard_fill;
-  marker-line-width:0;
-  marker-line-opacity:0;
-  marker-allow-overlap:true;
-}
-#turning_circle_case,
-#turning_circle_fill {
-  [zoom=14] { marker-width:@rdz14_min * 1.1; }
-  [zoom=15] { marker-width:@rdz15_min * 1.1; }
-  [zoom=16] { marker-width:@rdz16_min * 1.1; }
-  [zoom=17] { marker-width:@rdz17_min * 1.1; }
-  [zoom>=18] { marker-width:@rdz18_min * 1.1; }
 }
 
 /* ================================================================== */

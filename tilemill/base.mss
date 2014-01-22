@@ -1,5 +1,5 @@
 Map {   
-  background-color: black; 
+  background-color: @water; 
 }
 
 #wijken {
@@ -7,19 +7,30 @@ Map {
   polygon-opacity: 0.5;*/
 }
 
-#wijken::blur {
-  line-color: lighten(@blue, 60%);
-  line-width: 3;
+/*#wijken::blur {
+  line-color: lighten(@blue, 80%);
+  line-width: 2;
   image-filters: agg-stack-blur(3, 3);
   line-join: round;
   line-opacity: 0.3;
-}
+  [zoom<=13] {
+    line-width: 1;
+  }
+}*/
 
 #wijken::outline {
   line-color: @blue;
   line-width: 1;
   line-join: round;
-  line-opacity: 0.6;
+  line-opacity: 1;
+  
+  [zoom=12] {
+    line-width: 0.3;
+  }
+  [zoom=13] {
+    line-width: 0.6;
+  }
+
 }
 
 /* ================================================================== */
@@ -31,9 +42,9 @@ Map {
 #processed_p[zoom>=10] {
   /*polygon-fill: @land;
   polygon-gamma: 0.85;*/
-  
-  polygon-pattern-file: url("pattern.png");
-  polygon-pattern-opacity: 0.2;  
+  polygon-fill: black;
+  polygon-pattern-file: url("pattern2.png");
+  polygon-pattern-opacity: 0.1;
 }
 
 /* ================================================================== */

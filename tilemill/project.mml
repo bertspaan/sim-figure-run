@@ -1,13 +1,13 @@
 {
   "bounds": [
-    4.6994,
-    52.2614,
-    5.0935,
-    52.4518
+    4.5748,
+    52.2255,
+    5.234,
+    52.5235
   ],
   "center": [
-    4.8954,
-    52.3718,
+    4.8941,
+    52.3704,
     12
   ],
   "format": "png8",
@@ -595,7 +595,7 @@
         "dbname": "cbs",
         "id": "wijken",
         "project": "sim-figure-run",
-        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+        "srs": "+proj=stere +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.999908 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +no_defs  no_defs"
       },
       "id": "wijken",
       "class": "",
@@ -780,7 +780,7 @@
     }
   ],
   "scale": 1,
-  "metatile": 1,
+  "metatile": 4,
   "name": "SIM Figure Run",
   "description": "",
   "attribution": ""
