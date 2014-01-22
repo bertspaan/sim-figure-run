@@ -2,7 +2,7 @@
   text-name:"[bu_naam]";
   text-face-name: @sans_bold;
   //text-placement: ;
-  text-fill: @road_text;
+  text-fill: @buurt_text;
   text-halo-fill:@road_halo;
   text-halo-radius:1;
   text-min-distance: 80;
