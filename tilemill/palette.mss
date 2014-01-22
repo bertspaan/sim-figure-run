@@ -40,7 +40,9 @@ Map { font-directory: url(./fonts); }
 /* LANDUSE & LANDCOVER COLORS
 /* ================================================================== */
 
-@grass:             rgb(252,252,252);
+@land:             rgb(15, 15, 15);
+@water:            rgb(25, 25, 25);
+
 
 @road_line:         white;
 @road_fill:         black;

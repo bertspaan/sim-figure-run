@@ -42,16 +42,16 @@ Map {
 #processed_p[zoom>=10] {
   /*polygon-fill: @land;
   polygon-gamma: 0.85;*/
-  polygon-fill: rgb(5, 5, 5);
+  polygon-fill: @land;
   polygon-pattern-file: url("pattern2.png");
-  polygon-pattern-opacity: 0.1;
+  polygon-pattern-opacity: 0.16;
 }
 
 /* ================================================================== */
 /* WATER AREAS
 /* ================================================================== */
 
-@water:             rgb(20, 20, 20);
+
 
 #water_gen0[zoom>3][zoom<=9],
 #water_gen1[zoom>9][zoom<=12],
