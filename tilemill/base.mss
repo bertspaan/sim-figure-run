@@ -42,7 +42,7 @@ Map {
 #processed_p[zoom>=10] {
   /*polygon-fill: @land;
   polygon-gamma: 0.85;*/
-  polygon-fill: black;
+  polygon-fill: rgb(5, 5, 5);
   polygon-pattern-file: url("pattern2.png");
   polygon-pattern-opacity: 0.1;
 }
