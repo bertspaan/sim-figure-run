@@ -15,39 +15,41 @@ body {
 #box {
   position: absolute;
   display: block;
-  width: 500px;
+  width: 665px;
   height: 160px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 0 auto;
   top: 10px;
   right: 0;
   bottom: 0;
   left: 0;
   border-radius: 5px;
+  overflow: hidden;
 
   padding: 20px;
+  
+  border-width: 1px;
+  border-color: rgb(0, 51, 102);
+  border-style: solid;
+  box-shadow: 0 0 15px rgb(0, 51, 102);
 }
 
-h1, h2 {
+h1 {
+  font-size: 40px;
   margin: 0;
   width: 100%;
   text-align: center;
-}
-
-#last {
-  margin: 0;
-  width: 100%;
-  text-align: center;
-  display: block;
 }
 
 #logos {
-  width: 450px;
   margin: 0 auto;
+  position: absolute;
+  top: 120px;
 }
 
 #logos img {
   padding: 0 10px;
+  opacity: 0.8;
 }
 
 #waag-mini {
@@ -55,20 +57,43 @@ h1, h2 {
   position: relative;
 }
 
-#bar {
-  width: 100%;
+table {
+  width: 665px;
   height: 30px;
-  table-layout: fixed;
-  
+  table-layout: fixed;  
+  position: absolute;
+  top: 73px;
+}
+
+#bar table td {
+  border-color: rgba(0,0,0,0.1);
+  border-style: solid;
+  border-width: 1px;
+}
+
+#bar td:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+#bar td:last-child {
+  border-radius: 0 5px 5px 0;
 }
 
 #bar td {
   padding: 5px;
   text-align: right; 
   overflow: hidden;
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
 #bar td.walked {
   text-align: left; 
+}
+
+#total td {
+  text-align: center;
+}
+
+.leaflet-container a {
+  color: black !important;
 }
