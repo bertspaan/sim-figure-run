@@ -65,7 +65,7 @@ table {
   top: 73px;
 }
 
-#bar table td {
+#bar td {
   border-color: rgba(0,0,0,0.1);
   border-style: solid;
   border-width: 1px;
@@ -92,6 +92,7 @@ table {
 
 #total td {
   text-align: center;
+  padding: 5px;
 }
 
 .leaflet-container a {
