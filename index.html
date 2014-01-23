@@ -35,16 +35,19 @@
       <a href="http://citysdk.eu"><img src="img/logos/citysdk.png"></a>
       <a href="http://www.commit-nl.nl/projects/sensei-sensor-based-engagement-for-improved-health"><img src="img/logos/commit-sensei.png"></a>
     </div>
-    <!-- <div>
-      <p>Met de SIM SENSEI City Runner-app kan je hardlopen in de stad en bijdragen aan het wetenschappelijk onderzoek aan de HvA. Mensen die de City Runner-app gebruiken genereren bewegingsdata die gebruikt wordt om te bepalen hoe mensen hardlopen in de stad en hoe ze zich hierbij voelen.
+    <div id="more">
+      <a href="#">Meer informatie</a>
+    </div>
+    <div id="info">
+      <p>Met de <a href="http://digitallifecentre.nl/projecten/sensei-sensor-based-engagement-for-improved-health">SIM SENSEI City Runner-app</a> kan je hardlopen in de stad en bijdragen aan het wetenschappelijk onderzoek aan de HvA. Mensen die de City Runner-app gebruiken genereren bewegingsdata die gebruikt wordt om te bepalen hoe mensen hardlopen in de stad en hoe ze zich hierbij voelen.
       </p>
       <p>
-      De City Runner-app is speciaal voor Students in Motion 2014 ontwikkeld door het COMMIT project SENSEI, het Amsterdam Centre of Expertice project Sense in the City en het CitySDK project. Drie onderzoeksprojecten van het lectoraat Digital Life, onderdeel van Kenniscentrum CREATE-IT (Hogeschool van Amsterdam).
+      De City Runner-app is speciaal voor <a href="http://www.studentsinmotion.nl/">Students in Motion 2014</a> ontwikkeld door het <a href="http://www.commit-nl.nl/projects/sensei-sensor-based-engagement-for-improved-health">COMMIT project SENSEI</a>, het Amsterdam Centre of Expertice project Sense in the City en het <a href="http://citysdk.eu">CitySDK project</a>. Drie onderzoeksprojecten van het <a href="http://www.digitallifecentre.nl/">lectoraat Digital Life</a>, onderdeel van <a href="http://www.create-it.hva.nl/">Kenniscentrum CREATE-IT</a> (<a href="http://www.hva.nl/">Hogeschool van Amsterdam</a>).
       </p>
       <p>
-        <a href="http://digitallifecentre.nl/projecten/sensei-sensor-based-engagement-for-improved-health">Meer informatie over het onderzoek en de app.</a>
+        <a href="#" id="close">Sluiten</a>
       </p>
-    </div> -->
+    </div>
   </div>
 	<script>
   
@@ -118,6 +121,16 @@
       map.on("zoomend", function() {
         d3.selectAll("#map path").attr("stroke-width", 2.5 + ((map.getZoom() - 13) ));
       });
+      
+      d3.select("#more a").on("click", function() {
+        d3.select("#box").transition().style("height", "389px");
+      });
+      
+      d3.select("#close").on("click", function() {
+        d3.select("#box").transition().style("height", "152px");
+      });
+      
+        
       
       
     });
