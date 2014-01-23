@@ -40,13 +40,15 @@
     var tileLayer = L.tileLayer("http://tiles.citysdk.waag.org/v2/sim-figure-run/{z}/{x}/{y}.png", {
 		//var tileLayer = L.tileLayer("http://127.0.0.1:20008/tile/sim-figure-run/{z}/{x}/{y}.png?updated=1391253780000&metatile=1&scale=1", {
       attribution: waag,
-			minZoom: 12,
-			maxZoom: 16
+			minZoom: 13,
+			maxZoom: 18
 		}).addTo(map);
     map.setView([52.3674, 4.915], 14);
-        
     
-    d3.json("routes.json", function(json) {
+    var jsonUrl = "routes.json";
+    //var jsonUrl = "http://sim.dmci.hva.nl/routelist";
+    
+    d3.json(jsonUrl, function(json) {
       var geojson = {
         type: "FeatureCollection",
         features: []          
@@ -90,15 +92,19 @@
         }
       }).addTo(map);
       
+      walked = 170;
+      
       d3.select("#bar tr").selectAll("td")
           .data([walked, json.length - walked])
           .enter()
         .append("td")
-          .attr("width", function(d) { return Math.round(d / json.length * 100) + "%" })
-          .attr("title", function(d) { return Math.round(d / json.length * 100) + "%" })
+          .attr("width", function(d) { return Math.round(d / json.length * 100) + "%"; })
+          .attr("title", function(d) { return Math.round(d / json.length * 100) + "%"; })
           .attr("class", function(d, i) { return i == 0 ? "walked" : ""; })
           .style("background-color", function(d, i) { return colors[i]; })
           .html(function(d, i) { return d; })
+          
+      d3.select("#last").html(Math.round(walked / json.length * 100) + "% gelopen, laatste om gisteren, 32:21");
       
     });
     
