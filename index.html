@@ -95,7 +95,7 @@
         onEachFeature: onEachFeature,
         style: function(feature) {
           return {
-            weight: 2 + feature.properties.walked / 4,
+            weight: 2.5 + Math.min(feature.properties.walked / 4, 2),
             opacity: 0.7,
             color: feature.properties.walked == 0 ? colors[1] : colors[0]
           };
@@ -114,6 +114,10 @@
           
       var lastDate = routes.features[routes.features.length - 1].properties.date;
       d3.select("#total td").html(Math.round(walked / routes.features.length * 100) + "% van de routes gelopen, laatste " + moment(lastDate).fromNow());      
+      
+      map.on("zoomend", function() {
+        d3.selectAll("#map path").attr("stroke-width", 2.5 + ((map.getZoom() - 13) ));
+      });
       
       
     });
