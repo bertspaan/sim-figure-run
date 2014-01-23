@@ -54,13 +54,9 @@
     var colors = ["rgba(255, 153, 0, 0.9)", "rgba(190, 190, 190, 0.6)"],
         map = L.map('map');
     
-    //http://127.0.0.1:20008/tile/sim-figure-run/14/8414/5386.png?updated=1390253785000&metatile=1&scale=1
-    
     var waag = '<a href="http://www.waag.org" title="Institute for art, science &amp; technology">Waag Society <img id="waag-mini" src="img/waag-mini.png" /></a>';		
     
-    //var tileLayer = L.tileLayer("http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
     var tileLayer = L.tileLayer("http://tiles.citysdk.waag.org/v2/sim-figure-run/{z}/{x}/{y}.png", {
-		//var tileLayer = L.tileLayer("http://127.0.0.1:20008/tile/sim-figure-run/{z}/{x}/{y}.png?updated=1391253780000&metatile=1&scale=1", {
       attribution: waag,
 			minZoom: 13,
 			maxZoom: 18
@@ -80,7 +76,7 @@
         return 0;
       });      
       
-      walked = 0;
+      var walked = 0;
       routes.features.forEach(function(route) {        
         walked += (route.properties.walked > 0) ? 1 : 0;        
       });
@@ -128,10 +124,7 @@
       
       d3.select("#close").on("click", function() {
         d3.select("#box").transition().style("height", "152px");
-      });
-      
-        
-      
+      });  
       
     });
     
