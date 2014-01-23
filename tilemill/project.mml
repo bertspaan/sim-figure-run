@@ -605,6 +605,37 @@
       "name": "wijken"
     },
     {
+      "geometry": "polygon",
+      "extent": [
+        3.3842436488641954,
+        50.73548870040646,
+        7.243351653864072,
+        53.54661255941241
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT * FROM brt_2011_gn1 WHERE gm_naam = 'Amsterdam') AS w",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "13600,306900,278000,619299.999999997",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "dbname": "cbs",
+        "id": "wijken",
+        "project": "sim-figure-run",
+        "srs": "+proj=stere +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.999908 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +no_defs  no_defs"
+      },
+      "id": "wijken_labels",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=stere +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.999908 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +no_defs  no_defs",
+      "advanced": {},
+      "name": "wijken_labels"
+    },
+    {
       "Datasource": {
         "dbname": "citysdk",
         "extent": "-90,0,90,180",
@@ -780,7 +811,7 @@
     }
   ],
   "scale": 1,
-  "metatile": 4,
+  "metatile": 3,
   "name": "SIM Figure Run",
   "description": "",
   "attribution": ""

@@ -1,4 +1,4 @@
-#wijken[zoom>=14] {
+#wijken_labels[zoom>=14] {
   text-name:"[bu_naam]";
   text-face-name: @sans_bold;
   //text-placement: ;
@@ -8,6 +8,8 @@
   text-min-distance: 80;
   text-size:10;
   text-transform: uppercase;
+  
+  text-placement: interior;
   
   [zoom=14] {
     text-size: 10;

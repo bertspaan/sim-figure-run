@@ -1,5 +1,6 @@
 Map {   
   background-color: @water; 
+  buffer-size: 256;
 }
 
 #wijken {
@@ -30,7 +31,23 @@ Map {
   [zoom=13] {
     line-width: 0.6;
   }
-
+  [zoom=14] {
+    line-width: 0.9;
+  }
+  [zoom=15] {
+    line-width: 1.3;
+  }
+  [zoom=16] {
+    line-width: 1.7;
+  }
+  [zoom=17] {
+    line-width: 2.2;
+  }
+  [zoom=18] {
+    line-width: 2.8;
+  }
+  
+  
 }
 
 /* ================================================================== */
