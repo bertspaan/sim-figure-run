@@ -128,3 +128,9 @@ table {
   position: absolute;
   top: 180px;
 }
+
+#close {
+  width: 665px;
+  text-align: center;
+  display: block;
+}

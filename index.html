@@ -118,14 +118,21 @@
         d3.selectAll("#map path").attr("stroke-width", 2.5 + ((map.getZoom() - 13) ));
       });
       
-      d3.select("#more a").on("click", function() {
-        d3.select("#box").transition().style("height", "389px");
-      });
+      d3.select("#more a").on("click", toggleBox);      
+      d3.select("#close").on("click", toggleBox);      
       
-      d3.select("#close").on("click", function() {
-        d3.select("#box").transition().style("height", "152px");
-      });  
-      
+      function toggleBox() {
+        var open = "389px",
+            closed = "152px",
+            height = d3.select("#box").style("height");
+            
+        if (height === open) {
+          d3.select("#box").transition().style("height", closed);  
+        } else {
+          d3.select("#box").transition().style("height", open);            
+        }
+      }
+            
     });
     
   </script>
