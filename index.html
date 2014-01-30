@@ -94,7 +94,7 @@
         onEachFeature: onEachFeature,
         style: function(feature) {
           return {
-            weight: 2.5 + Math.min(feature.properties.walked / 4, 2),
+            weight: strokeWidth(feature.properties.walked),
             opacity: 0.7,
             color: feature.properties.walked == 0 ? colors[1] : colors[0]
           };
@@ -114,12 +114,19 @@
       var lastDate = routes.features[routes.features.length - 1].properties.date;
       d3.select("#total td").html(Math.round(walked / routes.features.length * 100) + "% van de routes gelopen, laatste " + moment(lastDate).fromNow());      
       
+      d3.selectAll("#map path").data(routes.features);
       map.on("zoomend", function() {
-        d3.selectAll("#map path").attr("stroke-width", 2.5 + ((map.getZoom() - 13) ));
+        d3.selectAll("#map path").attr("stroke-width", function(d) {
+          return strokeWidth(d.properties.walked);
+        });
       });
       
       d3.select("#more a").on("click", toggleBox);      
-      d3.select("#close").on("click", toggleBox);      
+      d3.select("#close").on("click", toggleBox); 
+      
+      function strokeWidth(walked) {
+        return 2.5 + Math.min(walked / 4, 3) + (map.getZoom() - 13);
+      }
       
       function toggleBox() {
         var open = "389px",
